@@ -1,15 +1,15 @@
-_Spring Boot_
-```
-_Spring boot Jdbc_
-```
+
+Spring Boot
+
+Spring boot Jdbc
+
 Spring Transaction
-```
+
 HikariCP Connection pooling
-```
+
 DB: MySql
-```
+
 Runner Class:  AppRunner
-  ```
   
 
 
