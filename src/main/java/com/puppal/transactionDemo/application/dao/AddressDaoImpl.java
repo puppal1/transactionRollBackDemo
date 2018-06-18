@@ -35,21 +35,10 @@ public class AddressDaoImpl implements AddressDao {
 
 	@Override
 	public AddressModel addAddress(AddressModel model) {
-		int retVal = 0;
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 
 		try {
 
-			/**
-			 * `address_id` bigint(11) unsigned NOT NULL AUTO_INCREMENT, `state`
-			 * varchar(50) NOT NULL, `zip` varchar(10) DEFAULT NULL, `country`
-			 * varchar(20) NOT NULL DEFAULT 'US', `created_by` int(11) DEFAULT
-			 * NULL, `created_date` datetime NOT NULL, `modified_by` int(11)
-			 * DEFAULT NULL, `modified_date` timestamp NOT NULL DEFAULT
-			 * CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, PRIMARY KEY
-			 * (`address_id`), ) ENGINE=InnoDB DEFAULT CHARSET=utf8
-			 * ROW_FORMAT=DYNAMIC;
-			 */
 			jdbcTemplate.update(new PreparedStatementCreator() {
 				@Override
 				public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
