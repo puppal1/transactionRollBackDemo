@@ -3,7 +3,9 @@ Spring Boot
 
 Spring boot Jdbc
 
-Spring Transaction
+Spring Transaction 
+  (@Transactional ((propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ,rollbackFor =   
+    SomeException.class)
 
 HikariCP Connection pooling
 
