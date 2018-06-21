@@ -7,9 +7,10 @@ Spring Transaction
   (@Transactional ((propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ,rollbackFor =   
     SomeException.class)
 
-HikariCP Connection pooling
 
 DB: MySql
+
+DB Script Location :  https://github.com/puppal1/transactionRollBackDemo/blob/master/src/main/resources/scripts.sql
 
 Runner Class:  AppRunner
 
