@@ -1,7 +1,5 @@
 package com.puppal.transactionDemo.application.dao;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -23,16 +21,16 @@ public class OrderAddressDaoImpl implements OrderAddressDao {
 	private JdbcTemplate jdbcTemplate;
 
 	@Override
-	public int addOrderAddressLine(OrderModel orderModel) throws OrderAddressDBException{
+	public int addOrderAddressLine(OrderModel orderModel) throws OrderAddressDBException {
 		int retVal = 0;
 		try {
 			retVal = jdbcTemplate.update(getOrderAddressInsert(),
 					new Object[] { orderModel.getOrderId(), orderModel.getAddressId() });
 		} finally {
-			
-//			if(retVal==1)
-//			throw new OrderAddressDBException(" DB error ");
-			
+
+//			 if(retVal==1)
+//			 throw new OrderAddressDBException(" DB error ");
+
 		}
 		return retVal;
 	}

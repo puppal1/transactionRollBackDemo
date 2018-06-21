@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.puppal.transactionDemo.application.model.AddressModel;
 import com.puppal.transactionDemo.application.model.OrderModel;
+import com.puppal.transactionDemo.application.model.TransactionStatusModel;
 import com.puppal.transactionDemo.application.service.ChangeOrderAddressService;
 
 import java.math.BigInteger;
@@ -13,7 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Component
-public class AppRunner implements CommandLineRunner{
+public class AppRunner implements CommandLineRunner {
 
 	private final static Logger logger = LoggerFactory.getLogger(AppRunner.class);
 
@@ -23,16 +24,29 @@ public class AppRunner implements CommandLineRunner{
 		this.orderAddServ = orderAddServ;
 	}
 
+	/**
+	 * create sample objects to be persisted call order service to persist call
+	 * txn status
+	 */
 	public void run(String... args) {
-		
+		TransactionStatusModel model = new TransactionStatusModel();
+		AddressModel addressModel = popAddress();
+		OrderModel orderModel = popOrder();
+		model.setOrderId(orderModel.getOrderId().longValue());
+		model.setUserId(addressModel.getUserId().longValue());
 		try {
-			orderAddServ.updateOrderAddress(popAddress(), popOrder());
+			String stat = orderAddServ.updateOrderAddress(addressModel, orderModel);
+			model.setTxnStatus(stat);
+			orderAddServ.updateTxnStatus(model);
 		} catch (Exception e) {
-			// TODO: handle exception
-			logger.info("Roll back reason: " + e.getMessage() +" ");
+			logger.info("Roll back reason: " + e.getMessage() + " ");
+			model.setTxnStatus("FAILURE");
+			model.setFailureReason(e.getMessage());
+			orderAddServ.updateTxnStatus(model);
+		} finally {
+			logger.info("END OF PROGRAM");
 		}
-		
-		
+
 	}
 
 	public AddressModel popAddress() {
@@ -47,9 +61,8 @@ public class AppRunner implements CommandLineRunner{
 	}
 
 	public OrderModel popOrder() {
-    	OrderModel model =  new OrderModel();
-    			model.setAddressId(new BigInteger("12"));
-    	model.setOrderId(new BigInteger("123"));
-    			return model;
-    }
+		OrderModel model = new OrderModel();
+		model.setOrderId(new BigInteger("123"));
+		return model;
+	}
 }
