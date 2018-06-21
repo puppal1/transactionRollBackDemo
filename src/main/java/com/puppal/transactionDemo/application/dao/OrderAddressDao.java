@@ -6,5 +6,6 @@ import com.puppal.transactionDemo.application.model.OrderModel;
 
 public interface OrderAddressDao {
 
+	
 	public int addOrderAddressLine(OrderModel orderModel) throws OrderAddressDBException, AddressPlatformException ; 
 }

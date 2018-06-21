@@ -9,6 +9,7 @@ PRIMARY KEY (`line_id`)
 ) DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 
+
 CREATE TABLE `transaction_log` (
 `txn_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 `user_id` bigint(20) unsigned DEFAULT NULL,

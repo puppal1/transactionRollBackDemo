@@ -36,6 +36,7 @@ public class TxnStatusDaoImpl implements TxnStatusDao {
 	public TransactionStatusModel addTxn(TransactionStatusModel model) {
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 
+		
 		try {
 
 			jdbcTemplate.update(new PreparedStatementCreator() {

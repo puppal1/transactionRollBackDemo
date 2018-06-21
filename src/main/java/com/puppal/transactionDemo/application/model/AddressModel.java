@@ -3,6 +3,7 @@ package com.puppal.transactionDemo.application.model;
 import java.math.BigInteger;
 import java.util.Date;
 
+
 public class AddressModel {
 
 	private BigInteger addressId;

@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class OrderModel {
 
+	
 	private BigInteger orderId;
 	private BigInteger lineId;
 	private BigInteger addressId;

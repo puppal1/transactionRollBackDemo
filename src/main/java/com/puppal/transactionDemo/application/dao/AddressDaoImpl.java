@@ -22,6 +22,7 @@ import com.puppal.transactionDemo.application.model.AddressModel;
 @Configuration
 @PropertySource(name = "abc", value = "classpath:dbQuery.properties")
 
+
 @ConfigurationProperties(prefix = "query")
 
 public class AddressDaoImpl implements AddressDao {

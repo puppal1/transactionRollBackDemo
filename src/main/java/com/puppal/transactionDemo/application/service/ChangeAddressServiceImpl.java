@@ -51,6 +51,7 @@ public class ChangeAddressServiceImpl implements ChangeOrderAddressService {
 			logger.info(" Order persis success: " + orderPersistStatus);
 			notificationService.wareHouseAPI();
 			transcationStatus = "SUCCESS";
+			
 		}
 
 		finally {
